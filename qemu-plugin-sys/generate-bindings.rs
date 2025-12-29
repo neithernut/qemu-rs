@@ -211,7 +211,7 @@ fn generate(tmp_dir: &Path, out_dir: &Path, version: usize) -> Result<()> {
 fn main() -> Result<()> {
     let metadata = MetadataCommand::new().no_deps().exec()?;
 
-    let search_package = "qemu-plugin-sys".parse()?;
+    let search_package = "qemu-plugin-sys";
     let package = metadata
         .packages
         .iter()

@@ -43,6 +43,8 @@ const QEMU_VERSIONS: &[&str] = &[
     "595cd9ce2ec9330882c991a647d5bc2a5640f380",
     // Plugin V5 is from 10.1.0
     "f8b2f64e2336a28bf0d50b6ef8a7d8c013e9bcf3",
+    // Plugin WIP/V6 is from 10.2.0 (no v6 official release yet!)
+    "698104725efad4b29079d857dfdebbd804e34c99",
 ];
 
 fn qemu_git_url(hash: &str) -> String {

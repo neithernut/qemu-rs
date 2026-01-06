@@ -84,6 +84,24 @@ use std::{
     sync::{Mutex, OnceLock},
 };
 
+#[cfg(not(any(
+    feature = "plugin-api-v0",
+    feature = "plugin-api-v1",
+    feature = "plugin-api-v2",
+    feature = "plugin-api-v3",
+    feature = "plugin-api-v4",
+    feature = "plugin-api-v5"
+)))]
+pub mod discon;
+#[cfg(not(any(
+    feature = "plugin-api-v0",
+    feature = "plugin-api-v1",
+    feature = "plugin-api-v2",
+    feature = "plugin-api-v3",
+    feature = "plugin-api-v4",
+    feature = "plugin-api-v5"
+)))]
+pub use discon::*;
 pub mod error;
 #[allow(unused_imports)]
 pub use error::*;

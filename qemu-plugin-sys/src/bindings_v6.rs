@@ -159,7 +159,7 @@ unsafe extern "C" {
     #[doc = " qemu_plugin_register_vcpu_discon_cb() - register a discontinuity callback\n @id: plugin ID\n @type: types of discontinuities for which to call the callback\n @cb: callback function\n\n The @cb function is called every time a vCPU receives a discontinuity event\n of the specified type(s), after the vCPU was prepared to handle the event.\n Preparation entails updating the PC, usually to some interrupt handler or\n trap vector entry."]
     pub fn qemu_plugin_register_vcpu_discon_cb(
         id: qemu_plugin_id_t,
-        type_: qemu_plugin_discon_type,
+        type_: i32,
         cb: qemu_plugin_vcpu_discon_cb_t,
     );
 }

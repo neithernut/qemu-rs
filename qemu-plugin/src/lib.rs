@@ -407,6 +407,31 @@ pub fn qemu_plugin_register_vcpu_resume_cb(
     Ok(())
 }
 
+#[cfg(not(any(
+    feature = "plugin-api-v0",
+    feature = "plugin-api-v1",
+    feature = "plugin-api-v2",
+    feature = "plugin-api-v3",
+    feature = "plugin-api-v4",
+    feature = "plugin-api-v5"
+)))]
+/// Register a callback to be called when an execution discontinuity occurs. The callback
+/// does not receive user data, so it is not possible to register it via closure.
+///
+/// # Arguments
+///
+/// - `id`: The plugin ID
+/// - `types`: The type(s) of discontinuities on wich to call the callback
+/// - `cb`: The callback to be called
+pub fn qemu_plugin_register_vcpu_discon_cb(
+    id: qemu_plugin_id_t,
+    types: DisconMask,
+    cb: VCPUDisconCallback,
+) -> Result<()> {
+    unsafe { crate::sys::qemu_plugin_register_vcpu_discon_cb(id, types.0, cb) };
+    Ok(())
+}
+
 /// Register a callback to be called when a translation block is translated. The callback
 /// receives a pointer to a `qemu_plugin_tb` structure, which can be queried for additional
 /// information including the list of translated instructions. The callback can register
